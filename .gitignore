@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+
+# Data & Storage
+chroma_db/
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Logs
+logs/*.log
+
+# Evaluation Reports
+evaluation/reports/*
+!evaluation/reports/.gitkeep
+
+# Ollama binaries (local install)
+bin/
+lib/ollama/
+
+# Tool caches
+.ruff_cache/
+.pytest_cache/
+
+# Gemini
+.gemini/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.tar
+
+# Misc
+*.bak
+*.tmp
