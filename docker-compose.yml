@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  rag-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-assistant-app
+    ports:
+      - "8501:8501"
+      - "8000:8000"
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./evaluation/reports:/app/evaluation/reports
+      # HuggingFace cache folder mapping to avoid re-downloading models on restart
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-service:11434
+      - CHROMA_PERSIST_DIR=/app/chroma_db
+      - LOG_DIR=/app/logs
+      - DATA_DIR=/app/data
+    restart: always
+    depends_on:
+      - ollama-service
+
+  ollama-service:
+    image: ollama/ollama:latest
+    container_name: rag-ollama-server
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: always
+
+volumes:
+  ollama-data:
