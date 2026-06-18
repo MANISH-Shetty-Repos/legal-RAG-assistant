@@ -106,5 +106,3 @@ Final Response with Citations
 * Continuous document indexing
 * Advanced observability
 * Cloud deployment
-
----
