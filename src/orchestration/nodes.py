@@ -13,7 +13,6 @@ from src.retrieval.hybrid_search import HybridSearcher
 from src.retrieval.reranker import rerank
 from src.generation.llm import generate_response
 from src.generation.citations import (
-    extract_citations,
     validate_citations_from_text,
     add_citation_warning,
 )
@@ -308,8 +307,6 @@ def citation_node(state: RAGState) -> dict:
     Node 6: Extract and validate citations from the response.
     """
     start = time.time()
-    response = state.get("response", "")
-
     citation_validation = state.get("citation_validation") or {
         "total_citations": 0,
         "valid_citations": 0,

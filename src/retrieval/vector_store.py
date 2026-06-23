@@ -22,7 +22,6 @@ class VectorStore:
         
         @st.cache_resource
         def get_chroma_client(persist_dir):
-            import chromadb
             return chromadb.PersistentClient(path=persist_dir)
 
         self.client = get_chroma_client(self.persist_dir)
