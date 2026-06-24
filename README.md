@@ -8,7 +8,8 @@ The application is built with a complete end-to-end RAG architecture featuring d
 
 The retrieval pipeline combines dense vector search with BM25 keyword search using Reciprocal Rank Fusion (RRF), followed by cross-encoder reranking to improve retrieval accuracy before passing the final context to the Groq-hosted Qwen3-32B language model.
 
-This project demonstrates practical implementation of modern RAG techniques using LangGraph orchestration, ChromaDB, Hugging Face embedding models, and Groq Cloud for high-performance inference.
+This project demonstrates a production-ready implementation of modern RAG techniques using LangGraph orchestration, ChromaDB, Hugging Face embedding models, and Groq Cloud for high-performance inference, with integrated **evaluation**, **monitoring**, and **observability** to ensure reliable, high-quality, and trustworthy responses.
+
 
 > **Disclaimer:** This application is intended for educational and informational purposes only. It should not be considered legal advice.
 
@@ -26,6 +27,20 @@ This project demonstrates practical implementation of modern RAG techniques usin
 * Interactive Streamlit interface for document management and chat-based question answering.
 * Evaluate response quality using RAGAS and LLM-as-a-Judge.
 * Modular architecture designed for easy deployment and future scalability.
+
+---
+
+## Production Monitoring & Observability
+
+To support production readiness and continuous quality assurance, the Legal RAG Assistant includes a comprehensive monitoring and observability layer that tracks system performance, retrieval quality, and response reliability throughout the RAG pipeline.
+
+* Monitors end-to-end pipeline latency, including retrieval, reranking, LLM generation, evaluation, citation extraction, and total response time.
+* Tracks retrieval quality using **Context Precision**, **Context Recall**, and **Answer Relevancy** metrics to evaluate retrieval effectiveness.
+* Detects **hallucinations** and measures response faithfulness using **RAGAS** and **LLM-as-a-Judge** evaluation techniques.
+* Automatically logs user queries, retrieved document chunks, source citations, model responses, evaluation scores, and system performance metrics for analysis and debugging.
+* Provides a real-time monitoring dashboard to visualize **latency trends**, **retrieval performance**, **response quality**, and overall **system health**.
+* Enables production-grade observability by identifying retrieval failures, hallucinations, slow responses, and quality degradation, supporting continuous monitoring and iterative improvement of the RAG system.
+
 
 
 ---
