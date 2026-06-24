@@ -135,23 +135,23 @@ This project demonstrates practical implementation of modern RAG techniques usin
 
 ---
 
-# Technology Stack
+## Technology Stack
 
-| Category                 | Technology                       |
-| ------------------------ | -------------------------------- |
-| **Programming Language** | Python 3.11                      |
-| **Frontend**             | Streamlit                        |
-| **Backend API**          | FastAPI                          |
-| **LLM Orchestration**    | LangGraph                        |
-| **RAG Framework**        | LangChain                        |
-| **LLM Provider**         | Groq Cloud                       |
-| **LLM Model**            | Qwen3-32B                        |
-| **Embedding Model**      | BAAI BGE Base (bge-base-en-v1.5) |
-| **Reranker**             | BAAI BGE Reranker Base           |
-| **Vector Database**      | ChromaDB                         |
-| **Keyword Retrieval**    | BM25                             |
-| **Hybrid Search**        | Reciprocal Rank Fusion (RRF)     |
-| **Evaluation**           | RAGAS, LLM-as-a-Judge            |
-| **Document Processing**  | PyPDF, Recursive Text Splitter   |
-| **Deployment**           | Docker, Render                   |
-| **Version Control**      | Git & GitHub                     |
+| Category                 | Technology                                          |
+| ------------------------ | --------------------------------------------------- |
+| **Programming Language** | Python 3.11                                         |
+| **Frontend**             | Streamlit                                           |
+| **Backend API**          | FastAPI                                             |
+| **LLM Orchestration**    | LangGraph                                           |
+| **RAG Framework**        | LangChain                                           |
+| **LLM Provider**         | Groq Cloud                                          |
+| **LLM Model**            | Qwen3-32B                                           |
+| **Embedding Model**      | BAAI BGE Base (bge-base-en-v1.5)                    |
+| **Reranker**             | BAAI BGE Reranker Base                              |
+| **Vector Database**      | ChromaDB                                            |
+| **Retrieval**            | Dense Retrieval, BM25, Reciprocal Rank Fusion (RRF) |
+| **Document Processing**  | PyPDF, Recursive Character Text Splitter            |
+| **Evaluation**           | RAGAS, LLM-as-a-Judge                               |
+| **CI/CD**                | GitHub Actions                                      |
+| **Deployment**           | Docker, Render                                      |
+| **Version Control**      | Git & GitHub                                        |
