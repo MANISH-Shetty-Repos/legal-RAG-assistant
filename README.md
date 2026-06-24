@@ -1,8 +1,8 @@
-# Indian Legal Rights Assistant
+# Legal RAG Assistant – AI-Powered Legal Document Question Answering System
 
 ## Overview
 
-The **Indian Legal Rights Assistant** is a production-grade **Retrieval-Augmented Generation (RAG)** application that answers legal rights-related questions using verified Indian legal documents. Instead of relying solely on a Large Language Model (LLM), the system retrieves relevant legal provisions from an indexed knowledge base and generates grounded, citation-backed responses.
+The **Legal RAG Assistant** is a **Retrieval-Augmented Generation (RAG)** application that answers legal rights-related questions using verified Indian legal documents. Instead of relying solely on a Large Language Model (LLM), the system retrieves relevant legal provisions from an indexed knowledge base and generates grounded, citation-backed responses.
 
 The application is built with a complete end-to-end RAG architecture featuring document ingestion, semantic search, hybrid retrieval, reranking, answer generation, and evaluation. Users can upload their own legal documents through the Streamlit interface, which are automatically processed, chunked, embedded, and indexed into ChromaDB for future retrieval without requiring manual reseeding.
 
