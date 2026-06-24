@@ -3,7 +3,6 @@ Seed Documents Script — Ingest sample Indian legal documents into the RAG syst
 """
 
 import sys
-import os
 from pathlib import Path
 
 # Add project root to path

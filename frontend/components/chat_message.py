@@ -23,7 +23,7 @@ def render_chat_message(msg: dict, index: int = 0):
         latency   = msg.get("latency_seconds")
         citations = msg.get("citations") or []
         mode      = msg.get("response_mode", "normal")
-        
+
         # ── Metadata badges ────────────────────────────────────────────────────
         badges_html = "<div style='display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px 0;'>"
         if latency is not None:
@@ -109,6 +109,3 @@ def _render_citation_chips(citations: list, index: int):
                 "</div>"
             )
             st.markdown(card_html, unsafe_allow_html=True)
-
-
-

@@ -19,13 +19,13 @@ class VectorStore:
 
         # Use Streamlit's cache_resource to prevent ChromaDB reload teardown bugs
         import streamlit as st
-        
+
         @st.cache_resource
         def get_chroma_client(persist_dir):
             return chromadb.PersistentClient(path=persist_dir)
 
         self.client = get_chroma_client(self.persist_dir)
-        
+
         self.collection = self.client.get_or_create_collection(
             name=self.collection_name,
             metadata={"hnsw:space": "cosine"},  # Cosine similarity for BGE

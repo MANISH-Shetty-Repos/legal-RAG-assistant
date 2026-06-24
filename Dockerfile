@@ -12,7 +12,6 @@ ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create virtual environment
@@ -45,20 +44,21 @@ COPY src/ ./src/
 COPY frontend/ ./frontend/
 COPY scripts/ ./scripts/
 COPY evaluation/ ./evaluation/
+COPY data/ ./data/
+COPY .streamlit/ ./.streamlit/
 COPY Makefile README.md pytest.ini ./
 
-# Create directories for data and storage
-RUN mkdir -p chroma_db data/raw data/processed logs evaluation/reports
+# Create directories for storage
+RUN mkdir -p chroma_db logs evaluation/reports
 
 # Environment variables
-ENV PORT=8501
 ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8501
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+  CMD curl --fail http://localhost:${PORT:-8501}/_stcore/health || exit 1
 
-# Command to run Streamlit
-CMD ["streamlit", "run", "frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Command to run Streamlit — uses $PORT for cloud platforms (Render, etc.)
+CMD ["sh", "-c", "streamlit run frontend/app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]

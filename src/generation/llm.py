@@ -1,36 +1,47 @@
 """
-LLM Wrapper — Ollama-served LLM (Qwen3/Llama3) for response generation.
+LLM Wrapper — Groq Cloud LLM (Qwen3-32B) for response generation.
 """
 
+import sys
 from loguru import logger
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from src.config import get_config
 
 
-_llm: ChatOllama | None = None
+_llm: ChatGroq | None = None
 
 
-def get_llm() -> ChatOllama:
+def get_llm() -> ChatGroq:
     """Get or create the singleton LLM instance."""
     global _llm
 
     if _llm is None:
         config = get_config()
 
-        logger.info(f"Initializing LLM: {config.llm.model} @ {config.llm.base_url}")
+        if not config.llm.api_key:
+            logger.error(
+                "GROQ_API_KEY is not set. "
+                "Get your free API key at https://console.groq.com/keys "
+                "and add it to your .env file: GROQ_API_KEY=your_key_here"
+            )
+            sys.exit(1)
 
-        _llm = ChatOllama(
+        logger.info(f"Initializing LLM: {config.llm.model} via Groq Cloud")
+
+        _llm = ChatGroq(
             model=config.llm.model,
-            base_url=config.llm.base_url,
+            api_key=config.llm.api_key,
             temperature=config.llm.temperature,
-            num_predict=config.llm.max_tokens,
+            max_tokens=config.llm.max_tokens,
+            reasoning_format="hidden",
         )
 
         logger.info(f"LLM initialized: {config.llm.model}")
 
     return _llm
+
 
 
 def generate_response(

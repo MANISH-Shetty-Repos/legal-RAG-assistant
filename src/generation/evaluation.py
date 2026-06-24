@@ -9,7 +9,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 
 def judge_with_llm(prompt: str, system_instruction: str) -> str:
-    """Helper to query the local LLM as an evaluation judge."""
+    """Helper to query the LLM as an evaluation judge."""
     try:
         llm = get_llm()
         messages = [

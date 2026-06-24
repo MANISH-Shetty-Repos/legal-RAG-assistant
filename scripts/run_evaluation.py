@@ -4,7 +4,6 @@ and performs automated evaluations (accuracy, citations, faithfulness, latency).
 """
 
 import sys
-import os
 import csv
 import json
 import time
@@ -16,7 +15,6 @@ from loguru import logger
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.config import get_config
 from src.orchestration.graph import RAGPipeline
 from src.generation.evaluation import (
     evaluate_faithfulness,

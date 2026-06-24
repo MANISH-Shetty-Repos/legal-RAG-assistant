@@ -54,11 +54,14 @@ clean-all: clean ## Full clean including venv
 docker-build: ## Build Docker image
 	docker build -t rag-system .
 
-docker-up: ## Start Docker containers
-	docker-compose up -d
+docker-run: ## Run Docker container (standalone)
+	docker run --rm -p 8501:8501 --env-file .env rag-system
 
-docker-down: ## Stop Docker containers
-	docker-compose down
+docker-up: ## Start with Docker Compose
+	docker compose up -d
+
+docker-down: ## Stop Docker Compose
+	docker compose down
 
 # --- Help ---
 help: ## Show this help

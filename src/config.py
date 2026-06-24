@@ -14,12 +14,14 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 
 class LLMConfig(BaseModel):
-    """LLM configuration settings."""
+    """LLM configuration settings (Groq Cloud)."""
 
-    base_url: str = Field(
-        default_factory=lambda: os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    api_key: str = Field(
+        default_factory=lambda: os.getenv("GROQ_API_KEY", "")
     )
-    model: str = Field(default_factory=lambda: os.getenv("LLM_MODEL", "qwen3:1.5b"))
+    model: str = Field(
+        default_factory=lambda: os.getenv("GROQ_MODEL", "qwen/qwen3-32b")
+    )
     temperature: float = Field(
         default_factory=lambda: float(os.getenv("LLM_TEMPERATURE", "0.1"))
     )
@@ -86,12 +88,6 @@ class AppConfig(BaseModel):
         default_factory=lambda: Path(os.getenv("DATA_DIR", "./data"))
     )
     project_root: Path = Field(default=PROJECT_ROOT)
-    database_url: str = Field(
-        default_factory=lambda: os.getenv(
-            "DATABASE_URL",
-            "postgresql://user:password@localhost:5432/citizen_rights_db",
-        )
-    )
 
     # Sub-configurations
 

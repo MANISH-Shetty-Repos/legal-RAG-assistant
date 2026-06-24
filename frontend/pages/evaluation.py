@@ -198,7 +198,7 @@ def _run_eval_script():
     progress_bar = st.progress(0)
     status_text = st.empty()
 
-    status_text.info("Starting evaluation run... (running test queries against local Qwen/Llama)")
+    status_text.info("Starting evaluation run... (running test queries against Groq Cloud LLM)")
     progress_bar.progress(10)
 
     try:
@@ -210,7 +210,7 @@ def _run_eval_script():
         cmd = [venv_python, str(project_root / "scripts" / "run_evaluation.py")]
 
         progress_bar.progress(30)
-        status_text.info("Querying local model and compiling metrics... This can take 1-2 minutes...")
+        status_text.info("Querying Groq Cloud LLM and compiling metrics... This can take 1-2 minutes...")
 
         res = subprocess.run(
             cmd,

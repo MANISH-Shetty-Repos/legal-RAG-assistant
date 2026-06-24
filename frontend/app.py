@@ -52,5 +52,3 @@ if st.session_state.get("page", "Chat") == "Chat":
     render_chat_page()
 else:
     render_evaluation_page()
-
-

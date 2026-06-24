@@ -36,9 +36,9 @@ logs/*.log
 evaluation/reports/*
 !evaluation/reports/.gitkeep
 
-# Ollama binaries (local install)
+# Local binaries
 bin/
-lib/ollama/
+lib/
 
 # Tool caches
 .ruff_cache/
